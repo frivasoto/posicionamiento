@@ -18,7 +18,9 @@ def inicializar_driver(navegador):
     try:
         if navegador.lower() == 'chrome':
             from selenium.webdriver.chrome.options import Options
+            from selenium.webdriver.chrome.service import Service  # <-- Añade esto
             from webdriver_manager.chrome import ChromeDriverManager
+
             opciones = Options()
             opciones.add_argument('--headless')
             opciones.add_argument('--no-sandbox')
@@ -26,7 +28,9 @@ def inicializar_driver(navegador):
             opciones.add_argument('--disable-gpu')
             opciones.add_argument('--window-size=1920,1080')
 
-            driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(),options=opciones)
+            # Versión corregida usando Service
+            service = Service(ChromeDriverManager().install())  # <-- Cambio clave
+            driver = webdriver.Chrome(service=service, options=opciones)  # <-- Sin executable_path
             return driver
     except WebDriverException as e:
         print(f"Error al inicializar el WebDriver: {e}")
