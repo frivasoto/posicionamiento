@@ -14,6 +14,6 @@ COPY . .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 ENV URL=https://www.revolico.com/item/kit-memoria-ram-gskill-trident-z5-rgb-ddr5-6400mhz-32gb-2-x-16gb-cl32-xmp-48255875
-ENV ESPERA_CARGA=5
+ENV ESPERA_CARGA=10
 
 CMD ["python3", "main.py"]
