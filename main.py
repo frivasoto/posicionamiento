@@ -11,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 NAVEGADOR = 'chrome'
 URL = os.getenv("URL")
+print(URL)
 ESPERA_CARGA =  int(os.getenv("ESPERA_CARGA"))  or 10
 
 
